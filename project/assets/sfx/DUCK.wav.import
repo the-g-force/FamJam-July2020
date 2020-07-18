@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/DUCK.wav-372be1d3d78a4b14a61a1c9cdba41ce4.sample"
+
+[deps]
+
+source_file="res://assets/sfx/DUCK.wav"
+dest_files=[ "res://.import/DUCK.wav-372be1d3d78a4b14a61a1c9cdba41ce4.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
