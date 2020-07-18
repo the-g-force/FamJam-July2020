@@ -114,6 +114,16 @@ text = "Duck"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ScoreLabel" type="Label" parent="."]
+margin_left = 2.52269
+margin_top = 7.56807
+margin_right = 167.523
+margin_bottom = 25.5681
+text = "YOU HAVE GONE 0 YARDS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="end_game" from="Player" to="." method="_on_Player_end_game"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="pressed" from="PopupDialog/VBoxContainer/PlayAgainButton" to="." method="_on_PlayAgainButton_pressed"]
