@@ -1,6 +1,7 @@
 extends Node2D
 
 onready var _obstacletimer : Timer = $Timer
+onready var _scoretimer : Timer = $ScoreTimer
 onready var _scorelabel : Label = $ScoreLabel
 onready var _popup_score_label : Label = $PopupDialog/VBoxContainer/Label
 
@@ -32,7 +33,6 @@ func _physics_process(delta):
 
 
 func _on_Timer_timeout():
-	score += 1
 	var _type = randi()%2
 	if _type == 1:
 		var obstacle
@@ -53,6 +53,7 @@ func _on_Timer_timeout():
 func _on_Player_end_game():
 	# Stop the game
 	slidespeed = 0
+	_scoretimer.stop()
 	_obstacletimer.stop()
 	
 	# Update the popup text
@@ -76,3 +77,7 @@ func _on_DuckButton_pressed():
 
 func _on_PlayAgainButton_pressed():
 	var _ignored_return_value = get_tree().change_scene("res://src/Level/Level.tscn")
+
+
+func _on_ScoreTimer_timeout():
+	score += 1
