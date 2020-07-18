@@ -57,6 +57,30 @@ text = "Back to Menu"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ButtonBox" type="Node2D" parent="."]
+
+[node name="JumpButton" type="Button" parent="ButtonBox"]
+margin_left = 795.288
+margin_top = 536.0
+margin_right = 839.288
+margin_bottom = 556.0
+text = "Jump"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DuckButton" type="Button" parent="ButtonBox"]
+margin_left = 185.726
+margin_top = 536.542
+margin_right = 229.726
+margin_bottom = 556.542
+text = "Duck"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="end_game" from="Player" to="." method="_on_Player_end_game"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="pressed" from="PopupDialog/VBoxContainer/BackToMenuButton" to="." method="_on_BackToMenuButton_pressed"]
+[connection signal="pressed" from="ButtonBox/JumpButton" to="." method="_on_JumpButton_pressed"]
+[connection signal="pressed" from="ButtonBox/DuckButton" to="." method="_on_DuckButton_pressed"]

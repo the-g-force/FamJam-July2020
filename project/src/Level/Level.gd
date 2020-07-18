@@ -49,3 +49,11 @@ func _on_Player_end_game():
 	
 func _on_BackToMenuButton_pressed():
 	get_tree().change_scene("res://src/MenuScene.tscn")
+
+
+func _on_JumpButton_pressed():
+	Input.action_press("ui_up")
+
+
+func _on_DuckButton_pressed():
+	Input.action_press("ui_down")
