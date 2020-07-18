@@ -25,6 +25,6 @@ func _on_Timer_timeout():
 	if _type == 1:
 		obstacle = load("res://src/Obstacles/GroundThing.tscn")
 		Obstacle = obstacle.instance()
-		Obstacle.position = Vector2(screensize.x, 200)
+		Obstacle.position = Vector2(screensize.x, 400)
 	add_child(Obstacle)
 	slidespeed += 1

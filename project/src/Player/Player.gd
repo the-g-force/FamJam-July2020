@@ -14,10 +14,10 @@ var _up := false
 
 
 func _physics_process(delta):
-	if Input.is_action_just_released("ui_down") and not _ducking and not _jumping:
+	if Input.is_action_just_pressed("ui_down") and not _ducking and not _jumping:
 		_ducking = true
 		actiontimer.start(_ducktime)
-	elif Input.is_action_just_released("ui_up") and not _ducking and not _jumping:
+	elif Input.is_action_just_pressed("ui_up") and not _ducking and not _jumping:
 		_jumping = true
 		_up = true
 		actiontimer.start(_jumptime)
