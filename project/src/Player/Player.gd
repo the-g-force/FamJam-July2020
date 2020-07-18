@@ -38,3 +38,4 @@ func _on_Actiontimer_timeout():
 		_jumping = false
 	if _ducking:
 		_ducking = false
+		position.y = -18

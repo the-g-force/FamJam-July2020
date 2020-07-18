@@ -2,18 +2,18 @@ extends Node2D
 
 onready var _obstacletimer : Timer = $Timer
 
-export var slidespeed := 15.0
+export var slidespeed := 800
 
 var screensize := Vector2(0,0)
 
 func _ready():
 	screensize = get_viewport_rect().size
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	var _moving_nodes = get_tree().get_nodes_in_group("Moving")
 	for object in _moving_nodes:
 		if object.position.x > 0:
-			object.position.x -= slidespeed
+			object.position.x -= slidespeed*delta
 		else:
 			object.queue_free()
 

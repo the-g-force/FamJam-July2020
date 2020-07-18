@@ -7,9 +7,11 @@ extents = Vector2( 10, 18 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
-_jumpspeed = 1000
+_jumptime = 0.25
+_jumpspeed = 800
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -18 )
 shape = SubResource( 1 )
 
 [node name="Actiontimer" type="Timer" parent="."]
