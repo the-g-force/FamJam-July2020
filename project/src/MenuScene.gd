@@ -7,7 +7,7 @@ onready var _fullscreen_toggle = $Controls/FullScreenToggle
 
 func _ready():
 	_musicmute_toggle.pressed = false if AudioServer.is_bus_mute(_MUSIC_BUS) else true
-	_fullscreen_toggle = true if OS.window_fullscreen else false
+	_fullscreen_toggle.pressed = true if OS.window_fullscreen else false
 
 func _on_Button_pressed():
 	var _ignoredResult = get_tree().change_scene_to(_Level)
