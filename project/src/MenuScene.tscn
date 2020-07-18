@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/MenuScene.gd" type="Script" id=1]
-[ext_resource path="res://src/ButtonFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/ButtonFont.tres" type="DynamicFont" id=2]
 
 [node name="MenuScene" type="Control"]
 anchor_right = 1.0
@@ -26,17 +26,18 @@ custom_fonts/font = ExtResource( 2 )
 text = "Start Running!"
 
 [node name="Controls" type="VBoxContainer" parent="."]
-margin_left = 438.883
-margin_top = 370.412
-margin_right = 584.883
-margin_bottom = 454.412
+margin_left = 352.453
+margin_top = 362.555
+margin_right = 664.453
+margin_bottom = 500.555
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MusicMuteToggle" type="CheckButton" parent="Controls"]
-margin_right = 146.0
-margin_bottom = 40.0
+margin_right = 312.0
+margin_bottom = 67.0
+custom_fonts/font = ExtResource( 2 )
 pressed = true
 text = "Music"
 __meta__ = {
@@ -44,9 +45,10 @@ __meta__ = {
 }
 
 [node name="FullScreenToggle" type="CheckButton" parent="Controls"]
-margin_top = 44.0
-margin_right = 146.0
-margin_bottom = 84.0
+margin_top = 71.0
+margin_right = 312.0
+margin_bottom = 138.0
+custom_fonts/font = ExtResource( 2 )
 text = "Fullscreen"
 __meta__ = {
 "_edit_use_anchors_": false
