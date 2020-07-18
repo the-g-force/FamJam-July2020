@@ -15,10 +15,10 @@ var _up := false
 signal end_game
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed("ui_down") and not _ducking and not _jumping:
+	if Input.is_action_just_pressed("duck") and not _ducking and not _jumping:
 		_ducking = true
 		_cutout.duck()
-	elif Input.is_action_just_pressed("ui_up") and not _ducking and not _jumping:
+	elif Input.is_action_just_pressed("jump") and not _ducking and not _jumping:
 		_jumping = true
 		_up = true
 		_actiontimer.start(_jumptime)

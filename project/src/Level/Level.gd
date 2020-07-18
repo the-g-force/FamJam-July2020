@@ -52,8 +52,8 @@ func _on_BackToMenuButton_pressed():
 
 
 func _on_JumpButton_pressed():
-	Input.action_press("ui_up")
+	Input.action_press("jump")
 
 
 func _on_DuckButton_pressed():
-	Input.action_press("ui_down")
+	Input.action_press("duck")
