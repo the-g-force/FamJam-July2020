@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/Player/Player.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 18 )
+
+[node name="Player" type="KinematicBody2D"]
+script = ExtResource( 1 )
+_jumpspeed = 250
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Actiontimer" type="Timer" parent="."]
+wait_time = 0.2
+[connection signal="timeout" from="Actiontimer" to="." method="_on_Actiontimer_timeout"]
