@@ -1,7 +1,7 @@
 extends Node2D
 
 onready var _obstacletimer : Timer = $Timer
-onready var _scorelabel : Label = $Label
+onready var _scorelabel : Label = $ScoreLabel
 
 export var slidespeed := 800
 export var head_y := 280
