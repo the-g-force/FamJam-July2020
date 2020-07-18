@@ -1,18 +1,34 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://src/Player/CutoutAnimation.tscn" type="PackedScene" id=2]
 
+[sub_resource type="Animation" id=1]
+resource_name = "Jump"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("CutoutAnimation:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -200 ), Vector2( 0, 0 ) ]
+}
+
 [node name="Player" type="Node2D"]
 script = ExtResource( 1 )
-_jumptime = 0.25
-_jumpspeed = 800
-
-[node name="Actiontimer" type="Timer" parent="."]
-wait_time = 0.2
 
 [node name="CutoutAnimation" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, -200 )
 scale = Vector2( 0.25, 0.25 )
-[connection signal="timeout" from="Actiontimer" to="." method="_on_Actiontimer_timeout"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Jump = SubResource( 1 )
 [connection signal="duck_over" from="CutoutAnimation" to="." method="_on_CutoutAnimation_duck_over"]
 [connection signal="hit_something" from="CutoutAnimation" to="." method="_on_CutoutAnimation_hit_something"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
