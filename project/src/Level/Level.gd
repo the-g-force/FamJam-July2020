@@ -1,12 +1,14 @@
 extends Node2D
 
 onready var _obstacletimer : Timer = $Timer
+onready var _popuplabel : Label = $PopupDialog/VBoxContainer/Label
 
 export var slidespeed := 800
 export var head_y := 280
 export var feet_y := 500
 
 var screensize := Vector2(0,0)
+var score := 0
 
 func _ready():
 	screensize = get_viewport_rect().size
@@ -27,6 +29,7 @@ func _physics_process(delta):
 
 func _on_Timer_timeout():
 	randomize()
+	score += 1
 	var _type = randi()%2
 	if _type == 1:
 		var obstacle
@@ -51,6 +54,7 @@ func _on_Player_end_game():
 	
 	# Show the popup
 	$PopupDialog.popup_centered()
+	_popuplabel.text += "\n you made it " + str(score) + " yards!"
 	
 	
 func _on_BackToMenuButton_pressed():
