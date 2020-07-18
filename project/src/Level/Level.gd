@@ -32,7 +32,6 @@ func _physics_process(delta):
 
 
 func _on_Timer_timeout():
-	randomize()
 	score += 1
 	var _type = randi()%2
 	if _type == 1:
