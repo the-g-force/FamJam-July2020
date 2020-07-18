@@ -1,3 +1,4 @@
+class_name Player
 extends KinematicBody2D
 
 onready var _collisionshape : CollisionShape2D = $CollisionShape2D
