@@ -3,6 +3,8 @@ extends Node2D
 onready var _obstacletimer : Timer = $Timer
 
 export var slidespeed := 800
+export var head_y := 280
+export var feet_y := 500
 
 var screensize := Vector2(0,0)
 
@@ -11,6 +13,10 @@ func _ready():
 
 
 func _physics_process(delta):
+	# Scroll the background
+	$ParallaxBackground.scroll_offset.x -= slidespeed/2 * delta
+	
+	# Move all the obstacles
 	var _moving_nodes = get_tree().get_nodes_in_group("Moving")
 	for object in _moving_nodes:
 		if object.position.x > 0:
@@ -27,14 +33,14 @@ func _on_Timer_timeout():
 		obstacle = load("res://src/Obstacles/GroundThing.tscn")
 		var Obstacle
 		Obstacle = obstacle.instance()
-		Obstacle.position = Vector2(screensize.x, 400)
+		Obstacle.position = Vector2(screensize.x, feet_y)
 		add_child(Obstacle)
 	elif _type == 0:
 		var obstacle
 		obstacle = load("res://src/Obstacles/FlyingThing.tscn")
 		var Obstacle
 		Obstacle = obstacle.instance()
-		Obstacle.position = Vector2(screensize.x, 180)
+		Obstacle.position = Vector2(screensize.x, head_y)
 		add_child(Obstacle)
 
 
