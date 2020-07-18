@@ -1,7 +1,7 @@
 extends Node2D
 
 onready var _obstacletimer : Timer = $Timer
-onready var _popuplabel : Label = $PopupDialog/VBoxContainer/Label
+onready var _scorelabel : Label = $Label
 
 export var slidespeed := 800
 export var head_y := 280
@@ -15,6 +15,13 @@ func _ready():
 
 
 func _physics_process(delta):
+	# Update score label
+	_scorelabel.text = "you have gone " + str(score) + " yard"
+	if score == 0 or score > 1:
+		_scorelabel.text += "s!"
+	else:
+		_scorelabel.text += "!"
+	
 	# Scroll the background
 	$ParallaxBackground.scroll_offset.x -= slidespeed/2 * delta
 	
@@ -54,7 +61,6 @@ func _on_Player_end_game():
 	
 	# Show the popup
 	$PopupDialog.popup_centered()
-	_popuplabel.text += "\n you made it " + str(score) + " yards!"
 	
 	
 func _on_BackToMenuButton_pressed():
