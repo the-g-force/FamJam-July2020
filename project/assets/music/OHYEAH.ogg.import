@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/OHYEAH.ogg-e53f5569da5126df6446cea1c37edc9d.oggstr"
+
+[deps]
+
+source_file="res://assets/music/OHYEAH.ogg"
+dest_files=[ "res://.import/OHYEAH.ogg-e53f5569da5126df6446cea1c37edc9d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
