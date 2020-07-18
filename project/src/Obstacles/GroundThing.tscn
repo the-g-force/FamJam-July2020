@@ -3,8 +3,6 @@
 [ext_resource path="res://assets/ground-object.png" type="Texture" id=1]
 [ext_resource path="res://src/Obstacles/GroundThing.gd" type="Script" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
-
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 1 ) ],
@@ -13,14 +11,18 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="GroundThing" type="Area2D"]
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="GroundThing" type="Area2D" groups=[
+"Moving",
+]]
 script = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 148.864, 445.746 )
+frames = SubResource( 2 )
+animation = "Bear"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 0.25, 0.25 )
-frames = SubResource( 2 )
-animation = "Bear"
 [connection signal="body_entered" from="." to="." method="_on_GroundThing_body_entered"]
