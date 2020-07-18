@@ -20,7 +20,7 @@ func _physics_process(delta):
 	_scorelabel.text = str(score)
 	
 	# Scroll the background
-	$ParallaxBackground.scroll_offset.x -= slidespeed/2 * delta
+	$ParallaxBackground.scroll_offset.x -= slidespeed/2.0 * delta
 	
 	# Move all the obstacles
 	var _moving_nodes = get_tree().get_nodes_in_group("Moving")

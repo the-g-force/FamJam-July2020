@@ -10,7 +10,7 @@ var _playing := true
 
 signal end_game
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if _playing:
 		if Input.is_action_just_pressed("duck") and not _ducking and not _jumping:
 			_ducking = true
@@ -31,5 +31,5 @@ func _on_CutoutAnimation_duck_over():
 	_ducking = false
 
 
-func _on_AnimationPlayer_animation_finished(anim_name):
+func _on_AnimationPlayer_animation_finished(_anim_name):
 	_jumping = false
