@@ -48,7 +48,7 @@ func _on_Player_end_game():
 	
 	
 func _on_BackToMenuButton_pressed():
-	get_tree().change_scene("res://src/MenuScene.tscn")
+	var _ignored_return_value = get_tree().change_scene("res://src/MenuScene.tscn")
 
 
 func _on_JumpButton_pressed():
@@ -60,4 +60,4 @@ func _on_DuckButton_pressed():
 
 
 func _on_PlayAgainButton_pressed():
-	get_tree().change_scene("res://src/Level/Level.tscn")
+	var _ignored_return_value = get_tree().change_scene("res://src/Level/Level.tscn")
