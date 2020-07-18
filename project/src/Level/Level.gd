@@ -9,11 +9,12 @@ var screensize := Vector2(0,0)
 func _ready():
 	screensize = get_viewport_rect().size
 
+
 func _physics_process(delta):
 	var _moving_nodes = get_tree().get_nodes_in_group("Moving")
 	for object in _moving_nodes:
 		if object.position.x > 0:
-			object.position.x -= slidespeed*delta
+			object.position.x -= slidespeed * delta
 		else:
 			object.queue_free()
 
@@ -38,4 +39,13 @@ func _on_Timer_timeout():
 
 
 func _on_Player_end_game():
-	get_tree().paused = true
+	# Stop the game
+	slidespeed = 0
+	_obstacletimer.stop()
+	
+	# Show the popup
+	$PopupDialog.popup_centered()
+	
+	
+func _on_BackToMenuButton_pressed():
+	get_tree().change_scene("res://src/MenuScene.tscn")
