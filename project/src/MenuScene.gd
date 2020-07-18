@@ -9,3 +9,7 @@ func _on_Button_pressed():
 
 func _on_MusicMuteToggle_toggled(button_pressed):
 	AudioServer.set_bus_mute(_MUSIC_BUS, not button_pressed)
+
+
+func _on_FullScreenToggle_toggled(button_pressed):
+	OS.window_fullscreen = button_pressed
