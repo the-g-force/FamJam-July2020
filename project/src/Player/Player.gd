@@ -12,6 +12,7 @@ var _jumping := false
 var _ducking := false
 var _up := false
 
+signal end_game
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_down") and not _ducking and not _jumping:
@@ -38,8 +39,9 @@ func _on_Actiontimer_timeout():
 		_jumping = false
 
 
-func _on_CutoutAnimation_hit_something(_area):
-	pass # Replace with function body.
+func _on_CutoutAnimation_hit_something(area):
+	if area is Obstacle:
+		emit_signal("end_game")
 
 
 func _on_CutoutAnimation_duck_over():

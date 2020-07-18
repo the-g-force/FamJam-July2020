@@ -33,5 +33,9 @@ func _on_Timer_timeout():
 		obstacle = load("res://src/Obstacles/FlyingThing.tscn")
 		var Obstacle
 		Obstacle = obstacle.instance()
-		Obstacle.position = Vector2(screensize.x, 200)
+		Obstacle.position = Vector2(screensize.x, 180)
 		add_child(Obstacle)
+
+
+func _on_Player_end_game():
+	get_tree().paused = true

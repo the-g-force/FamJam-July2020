@@ -11,4 +11,5 @@ position = Vector2( 100, 400 )
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+[connection signal="end_game" from="Player" to="." method="_on_Player_end_game"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
