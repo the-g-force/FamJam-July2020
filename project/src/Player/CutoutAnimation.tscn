@@ -1,0 +1,107 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/guy/torso.png" type="Texture" id=1]
+[ext_resource path="res://assets/guy/hips.png" type="Texture" id=2]
+[ext_resource path="res://assets/guy/head.png" type="Texture" id=3]
+[ext_resource path="res://assets/guy/arm-R.png" type="Texture" id=4]
+[ext_resource path="res://assets/guy/leg-L.png" type="Texture" id=5]
+[ext_resource path="res://assets/guy/arm-L.png" type="Texture" id=6]
+[ext_resource path="res://assets/guy/leg-R.png" type="Texture" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Run"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Hips/RightLeg:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -43.354, 22.2403, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hips/LeftLeg:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -29.8033, 39.379, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hips/Torso/RightArm:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6, 0.9, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 15.6193, -29.9361, 15.7888 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hips/Torso/LeftArm:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 20.0343, -4.29798, 29.4431 ]
+}
+
+[node name="CutoutAnimation" type="Node2D"]
+
+[node name="Hips" type="Sprite" parent="."]
+position = Vector2( 480.833, 407.294 )
+texture = ExtResource( 2 )
+
+[node name="Torso" type="Sprite" parent="Hips"]
+position = Vector2( 25.4559, -63.6396 )
+texture = ExtResource( 1 )
+
+[node name="Head" type="Sprite" parent="Hips/Torso"]
+position = Vector2( 35.3553, -387.495 )
+texture = ExtResource( 3 )
+
+[node name="LeftArm" type="Sprite" parent="Hips/Torso"]
+position = Vector2( 97.9845, -189.321 )
+rotation = 0.00230097
+z_index = -1
+texture = ExtResource( 6 )
+offset = Vector2( 92.9344, -110.492 )
+
+[node name="RightArm" type="Sprite" parent="Hips/Torso"]
+position = Vector2( -86.0992, -227.485 )
+rotation = -0.1664
+z_index = -1
+texture = ExtResource( 4 )
+offset = Vector2( -62.3932, -106.269 )
+
+[node name="LeftLeg" type="Sprite" parent="Hips"]
+position = Vector2( 75.0489, 45.0079 )
+rotation = 0.121343
+z_index = -1
+texture = ExtResource( 5 )
+offset = Vector2( 18.2892, 124.698 )
+
+[node name="RightLeg" type="Sprite" parent="Hips"]
+position = Vector2( -81.7516, 36.5322 )
+rotation = -0.148431
+z_index = -1
+texture = ExtResource( 7 )
+offset = Vector2( -46.9418, 117.617 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Run = SubResource( 1 )
