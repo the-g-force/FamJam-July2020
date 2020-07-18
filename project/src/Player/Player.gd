@@ -45,6 +45,7 @@ func _on_Actiontimer_timeout():
 func _on_CutoutAnimation_hit_something(area):
 	if area is Obstacle:
 		_playing = false
+		$CutoutAnimation.stop_all_animations()
 		emit_signal("end_game")
 
 

@@ -14,6 +14,10 @@ func duck() -> void:
 	emit_signal("duck_over")
 
 
+func stop_all_animations():
+	$AnimationTree.active = false
+
+
 func _on_Area2D_area_entered(area):
 	emit_signal("hit_something", area)
 
