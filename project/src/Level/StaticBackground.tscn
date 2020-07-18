@@ -1,7 +1,7 @@
 [gd_scene format=2]
 
 [node name="StaticBackground" type="ColorRect"]
-modulate = Color( 0.388235, 0.823529, 0.784314, 1 )
+modulate = Color( 0.0313726, 0.0823529, 0.180392, 1 )
 margin_right = 1024.0
 margin_bottom = 600.0
 __meta__ = {
