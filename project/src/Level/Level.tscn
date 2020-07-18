@@ -1,10 +1,19 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Level/Level.gd" type="Script" id=2]
 [ext_resource path="res://assets/background1.png" type="Texture" id=3]
 [ext_resource path="res://assets/foreground.png" type="Texture" id=4]
 [ext_resource path="res://src/Level/StaticBackground.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/fonts/ButtonFont.tres" type="DynamicFont" id=6]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://assets/fonts/VarelaRound-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+outline_size = 3
+font_data = SubResource( 1 )
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 2 )
@@ -96,31 +105,36 @@ __meta__ = {
 [node name="ButtonBox" type="Node2D" parent="."]
 
 [node name="JumpButton" type="Button" parent="ButtonBox"]
-margin_left = 795.288
-margin_top = 536.0
-margin_right = 839.288
-margin_bottom = 556.0
+margin_left = 563.0
+margin_top = 521.0
+margin_right = 880.0
+margin_bottom = 586.0
+custom_fonts/font = ExtResource( 6 )
 text = "Jump"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="DuckButton" type="Button" parent="ButtonBox"]
-margin_left = 185.726
-margin_top = 536.542
-margin_right = 229.726
-margin_bottom = 556.542
+margin_left = 133.0
+margin_top = 521.0
+margin_right = 454.0
+margin_bottom = 586.0
+custom_fonts/font = ExtResource( 6 )
 text = "Duck"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ScoreLabel" type="Label" parent="."]
-margin_left = 2.52269
-margin_top = 7.56807
-margin_right = 167.523
-margin_bottom = 25.5681
-text = "YOU HAVE GONE 0 YARDS"
+margin_left = 365.79
+margin_top = 10.9317
+margin_right = 530.79
+margin_bottom = 69.9317
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_outline_modulate = Color( 0.34902, 0.121569, 0.121569, 1 )
+text = "X"
+align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }

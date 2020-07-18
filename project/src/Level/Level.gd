@@ -16,11 +16,7 @@ func _ready():
 
 func _physics_process(delta):
 	# Update score label
-	_scorelabel.text = "you have gone " + str(score) + " yard"
-	if score == 0 or score > 1:
-		_scorelabel.text += "s!"
-	else:
-		_scorelabel.text += "!"
+	_scorelabel.text = str(score)
 	
 	# Scroll the background
 	$ParallaxBackground.scroll_offset.x -= slidespeed/2 * delta
