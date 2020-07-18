@@ -41,7 +41,7 @@ func _physics_process(_delta):
 
 
 func _on_CutoutAnimation_hit_something(area):
-	if area is Obstacle:
+	if area is Obstacle and _playing:
 		_playing = false
 		$CutoutAnimation.stop_all_animations()
 		_play_random_sound(DEATH_SOUNDS)
