@@ -57,3 +57,7 @@ func _on_JumpButton_pressed():
 
 func _on_DuckButton_pressed():
 	Input.action_press("duck")
+
+
+func _on_PlayAgainButton_pressed():
+	get_tree().change_scene("res://src/Level/Level.tscn")
