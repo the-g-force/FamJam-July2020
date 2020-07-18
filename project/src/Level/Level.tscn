@@ -47,14 +47,15 @@ position = Vector2( 100, 500 )
 autostart = true
 
 [node name="PopupDialog" type="PopupDialog" parent="."]
+visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 413.533
-margin_top = 246.471
-margin_right = 613.533
-margin_bottom = 446.471
+margin_left = 215.687
+margin_top = 143.881
+margin_right = 808.687
+margin_bottom = 482.881
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -76,27 +77,29 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="PopupDialog/VBoxContainer"]
-margin_top = 60.0
-margin_right = 200.0
-margin_bottom = 91.0
-text = "YOU ARE DEAD
-"
+margin_top = 71.0
+margin_right = 593.0
+margin_bottom = 130.0
+custom_fonts/font = ExtResource( 6 )
+text = "You ran X yards!"
 align = 1
 valign = 1
 
 [node name="PlayAgainButton" type="Button" parent="PopupDialog/VBoxContainer"]
-margin_top = 95.0
-margin_right = 200.0
-margin_bottom = 115.0
+margin_top = 134.0
+margin_right = 593.0
+margin_bottom = 199.0
+custom_fonts/font = ExtResource( 6 )
 text = "Play Again"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="BackToMenuButton" type="Button" parent="PopupDialog/VBoxContainer"]
-margin_top = 119.0
-margin_right = 200.0
-margin_bottom = 139.0
+margin_top = 203.0
+margin_right = 593.0
+margin_bottom = 268.0
+custom_fonts/font = ExtResource( 6 )
 text = "Back to Menu"
 __meta__ = {
 "_edit_use_anchors_": false

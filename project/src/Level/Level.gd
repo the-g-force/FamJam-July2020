@@ -2,6 +2,7 @@ extends Node2D
 
 onready var _obstacletimer : Timer = $Timer
 onready var _scorelabel : Label = $ScoreLabel
+onready var _popup_score_label : Label = $PopupDialog/VBoxContainer/Label
 
 export var slidespeed := 800
 export var head_y := 280
@@ -54,6 +55,9 @@ func _on_Player_end_game():
 	# Stop the game
 	slidespeed = 0
 	_obstacletimer.stop()
+	
+	# Update the popup text
+	_popup_score_label.text = _popup_score_label.text.replace('X', str(score))
 	
 	# Show the popup
 	$PopupDialog.popup_centered()
