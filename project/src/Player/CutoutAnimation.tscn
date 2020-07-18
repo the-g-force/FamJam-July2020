@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/guy/torso.png" type="Texture" id=1]
 [ext_resource path="res://assets/guy/hips.png" type="Texture" id=2]
@@ -9,8 +9,13 @@
 [ext_resource path="res://assets/guy/leg-R.png" type="Texture" id=7]
 [ext_resource path="res://src/Player/CutoutAnimation.gd" type="Script" id=8]
 
-[sub_resource type="Animation" id=2]
-resource_name = "Duck"
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 155.512, 146.592 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 148.03, 265.641 )
+
+[sub_resource type="Animation" id=3]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Hips/Torso:rotation_degrees")
@@ -37,8 +42,7 @@ tracks/1/keys = {
 "values": [ Vector2( 25.4559, -63.6396 ), Vector2( -48.6266, -36.7005 ), Vector2( -48.6266, -36.7005 ), Vector2( 25.4559, -63.6396 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "Run"
+[sub_resource type="Animation" id=4]
 length = 1.5
 loop = true
 tracks/0/type = "value"
@@ -90,23 +94,23 @@ tracks/3/keys = {
 "values": [ 0.0, 20.0343, -4.29798, 29.4431 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=7]
+[sub_resource type="AnimationNodeAnimation" id=5]
 animation = "Duck"
 
-[sub_resource type="AnimationNodeOneShot" id=8]
+[sub_resource type="AnimationNodeOneShot" id=6]
 filter_enabled = true
 filters = [ "Hips/Torso:position", "Hips/Torso:rotation_degrees" ]
 
-[sub_resource type="AnimationNodeAnimation" id=5]
+[sub_resource type="AnimationNodeAnimation" id=7]
 animation = "Run"
 
-[sub_resource type="AnimationNodeBlendTree" id=6]
-graph_offset = Vector2( 0, 63.5 )
-nodes/DuckAnimation/node = SubResource( 7 )
+[sub_resource type="AnimationNodeBlendTree" id=8]
+graph_offset = Vector2( 0, 151.5 )
+nodes/DuckAnimation/node = SubResource( 5 )
 nodes/DuckAnimation/position = Vector2( 300, 240 )
-nodes/DuckOneShot/node = SubResource( 8 )
+nodes/DuckOneShot/node = SubResource( 6 )
 nodes/DuckOneShot/position = Vector2( 600, 100 )
-nodes/RunAnimation/node = SubResource( 5 )
+nodes/RunAnimation/node = SubResource( 7 )
 nodes/RunAnimation/position = Vector2( 360, 80 )
 nodes/output/position = Vector2( 860, 120 )
 node_connections = [ "output", 0, "DuckOneShot", "DuckOneShot", 0, "RunAnimation", "DuckOneShot", 1, "DuckAnimation" ]
@@ -115,8 +119,14 @@ node_connections = [ "output", 0, "DuckOneShot", "DuckOneShot", 0, "RunAnimation
 script = ExtResource( 8 )
 
 [node name="Hips" type="Sprite" parent="."]
-position = Vector2( 480.833, 407.294 )
+position = Vector2( 14.6692, -317.379 )
 texture = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="Hips"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hips/Area2D"]
+position = Vector2( -1.95563, 160.578 )
+shape = SubResource( 1 )
 
 [node name="Torso" type="Sprite" parent="Hips"]
 position = Vector2( -48.6266, -36.7005 )
@@ -129,38 +139,46 @@ texture = ExtResource( 3 )
 
 [node name="LeftArm" type="Sprite" parent="Hips/Torso"]
 position = Vector2( 97.9845, -189.321 )
-rotation = 0.250044
+rotation = 0.326928
 z_index = -1
 texture = ExtResource( 6 )
 offset = Vector2( 92.9344, -110.492 )
 
 [node name="RightArm" type="Sprite" parent="Hips/Torso"]
 position = Vector2( -86.0992, -227.485 )
-rotation = -0.401195
+rotation = -0.297004
 z_index = -1
 texture = ExtResource( 4 )
 offset = Vector2( -62.3932, -106.269 )
 
+[node name="Area2D" type="Area2D" parent="Hips/Torso"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hips/Torso/Area2D"]
+position = Vector2( -4.23779, -228.844 )
+shape = SubResource( 2 )
+
 [node name="LeftLeg" type="Sprite" parent="Hips"]
 position = Vector2( 75.0489, 45.0079 )
-rotation = 0.629314
+rotation = 0.630565
 z_index = -1
 texture = ExtResource( 5 )
 offset = Vector2( 18.2892, 124.698 )
 
 [node name="RightLeg" type="Sprite" parent="Hips"]
 position = Vector2( -81.7516, 36.5322 )
-rotation = 0.333194
+rotation = 0.356128
 z_index = -1
 texture = ExtResource( 7 )
 offset = Vector2( -46.9418, 117.617 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Duck = SubResource( 2 )
-anims/Run = SubResource( 1 )
+anims/Duck = SubResource( 3 )
+anims/Run = SubResource( 4 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 6 )
+tree_root = SubResource( 8 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/DuckOneShot/active = false
+[connection signal="area_entered" from="Hips/Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="area_entered" from="Hips/Torso/Area2D" to="." method="_on_Area2D_area_entered"]

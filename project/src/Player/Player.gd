@@ -1,8 +1,8 @@
 class_name Player
-extends KinematicBody2D
+extends Node2D
 
-onready var _collisionshape : CollisionShape2D = $CollisionShape2D
-onready var actiontimer : Timer = $Actiontimer
+onready var _actiontimer : Timer = $Actiontimer
+onready var _cutout : Cutout = $CutoutAnimation
 
 export var _jumptime := 0.2
 export var _ducktime := 0.4
@@ -16,26 +16,31 @@ var _up := false
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_down") and not _ducking and not _jumping:
 		_ducking = true
-		actiontimer.start(_ducktime)
+		_cutout.duck()
 	elif Input.is_action_just_pressed("ui_up") and not _ducking and not _jumping:
 		_jumping = true
 		_up = true
-		actiontimer.start(_jumptime)
+		_actiontimer.start(_jumptime)
 	var _velocity := Vector2(0,0)
 	if _up:
 		_velocity.y -= 1
 	elif _jumping and not _up:
 		_velocity.y += 1
 	_velocity *= _jumpspeed*delta
-	var _error = move_and_collide(_velocity)
+	position += _velocity
 
 
 func _on_Actiontimer_timeout():
 	if _jumping and _up:
 		_up = false
-		actiontimer.start(_jumptime)
+		_actiontimer.start(_jumptime)
 	elif _jumping and not _up:
 		_jumping = false
-	if _ducking:
-		_ducking = false
-		position.y = -18
+
+
+func _on_CutoutAnimation_hit_something(_area):
+	pass # Replace with function body.
+
+
+func _on_CutoutAnimation_duck_over():
+	_ducking = false
