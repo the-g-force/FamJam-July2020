@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/MenuScene.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/ButtonFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/title.png" type="Texture" id=3]
 
 [node name="MenuScene" type="Control"]
 anchor_right = 1.0
@@ -16,20 +17,26 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -6.0
-margin_top = -10.0
-margin_right = 6.0
-margin_bottom = 10.0
+margin_left = -165.704
+margin_top = 95.4251
+margin_right = 174.296
+margin_bottom = 160.425
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 2 )
 text = "Start Running!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Controls" type="VBoxContainer" parent="."]
-margin_left = 352.453
-margin_top = 362.555
-margin_right = 664.453
-margin_bottom = 500.555
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -156.0
+margin_top = -138.0
+margin_right = 156.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -53,6 +60,10 @@ text = "Fullscreen"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="title" type="Sprite" parent="."]
+position = Vector2( 512, 200 )
+texture = ExtResource( 3 )
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="toggled" from="Controls/MusicMuteToggle" to="." method="_on_MusicMuteToggle_toggled"]
 [connection signal="toggled" from="Controls/FullScreenToggle" to="." method="_on_FullScreenToggle_toggled"]
