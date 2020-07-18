@@ -40,7 +40,7 @@ func _on_Actiontimer_timeout():
 			_actiontimer.start(_jumptime)
 		elif _jumping and not _up:
 			_jumping = false
-			position.y = 0
+			position = Vector2(100,500)
 
 
 func _on_CutoutAnimation_hit_something(area):
